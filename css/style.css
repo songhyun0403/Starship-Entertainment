@@ -1,0 +1,620 @@
+@charset 'utf-8';
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+
+:root {
+  font-size: 62.5%; /* 10px */
+  --main-color: #fedc83;
+  --title-color: #000;
+  --text-color: #333;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+  color: var(--main-color);
+  transition: 0.3s;
+}
+
+hr,
+.hidden {
+  position: absolute;
+  margin: -1px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+body {
+  font: 2rem 'Pretendard', sans-serif;
+  overflow-x: hidden;
+}
+
+.inner {
+  width: 132rem;
+  margin: 0 auto;
+}
+
+#header {
+  padding: 3rem 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#header.scrolled {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+#header nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+#header h1 {
+  width: 14.7rem;
+  height: 5.3rem;
+  background: url(../img/foot-logo.svg) no-repeat 0 0 / cover;
+}
+
+#header.scrolled h1 {
+  background: url(../img/header-logo.svg) no-repeat 0 0 / cover;
+}
+#header .gnb {
+  display: flex;
+  gap: 7.5rem;
+  align-items: center;
+}
+
+#header .gnb li {
+  font-weight: 600;
+  font-size: 2.2rem;
+  color: #fff;
+  position: relative; /* 가상 요소를 위한 상대 위치 설정 */
+  display: inline-block; /* 가상 요소를 텍스트와 함께 배치하기 위해 인라인 블록으로 설정 */
+  padding-bottom: 5px; /* 선과 텍스트 사이의 간격을 설정 */
+}
+
+#header.scrolled .gnb li {
+  color: black; /* 스크롤 시 폰트 색상 변경 */
+}
+
+#header .gnb li::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px; /* 밑줄의 두께 */
+  background: var(--main-color); /* 밑줄의 색상 */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out; /* 애니메이션 전환 시간 및 효과 */
+}
+
+#header .gnb li:hover::after {
+  transform: scaleX(1);
+}
+
+#header .menu-more {
+  width: 3rem;
+  height: 3rem;
+
+  background: url(../img/btn-more-white.png) no-repeat 50% 50% / cover;
+}
+
+#header.scrolled .menu-more {
+  background: url(../img/btn-more.png) no-repeat 50% 50% / cover;
+}
+
+.visual {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #55f;
+  overflow: hidden;
+}
+
+.video {
+  width: 150%;
+  height: 150%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.video iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.artist {
+  padding: 30rem 0 15rem;
+}
+
+.artist-title {
+  font-weight: 600;
+  font-size: 2.8rem;
+  color: #000;
+
+  display: flex;
+  gap: 32.4rem;
+
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.actiors,
+.artists {
+  cursor: pointer;
+  position: relative; /* 가상 요소를 위한 상대 위치 설정 */
+  transition: 0.3s;
+}
+
+.actiors:hover,
+.artists:hover {
+  color: var(--main-color);
+}
+.actiors::after,
+.artists::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px; /* 밑줄을 텍스트 아래에 배치 */
+  width: 100%;
+  height: 2px; /* 밑줄의 두께 */
+  background: var(--main-color); /* 밑줄의 색상 */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out; /* 애니메이션 전환 시간 및 효과 */
+}
+
+.actiors:hover::after,
+.artists:hover::after {
+  transform: scaleX(1);
+}
+
+.artists-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  flex: column;
+  gap: 2rem;
+
+  margin-top: 15rem;
+}
+
+.artists-list li {
+  width: 30.8rem;
+  height: 37rem;
+
+  /* background: green; */
+  border: 1px solid #000;
+  justify-content: center;
+  border-radius: 10px;
+
+  padding: 30px 10px 0;
+}
+
+.artists-list li figure {
+  width: 28rem;
+  height: 22.5rem;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+
+  transition: 0.3s;
+}
+.artists-list li figure:hover {
+  border-radius: 10px;
+}
+
+.artists-list li figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  transition: 0.4s;
+}
+
+.artists-list li:hover figure img {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.artists-list li:last-child {
+  display: flex;
+  align-items: center;
+  border: none;
+  position: relative;
+}
+.artists-list li:last-child .more {
+  width: 10rem;
+  border: 1px solid #000;
+  /* padding: 1rem; */
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  transition: 0.3s;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.artists-list li:last-child .more-con {
+  font-weight: 500;
+  font-size: 2rem;
+  color: #000;
+}
+.artists-list li:last-child .more-ico {
+  width: 1.2rem;
+  height: 1.2rem;
+  background: url(../img/ico-more.png) no-repeat 0 0 / contain;
+}
+
+.artists-list li:last-child .more:hover {
+  background: var(--main-color);
+  border: 1px solid var(--main-color);
+}
+
+.artist-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.2rem;
+}
+
+.btn-goinsta {
+  width: 3rem;
+  height: 3rem;
+  background: url(../img/ico-hart.svg) no-repeat 50% / contain;
+  position: relative;
+}
+
+.btn-goinsta::after {
+  content: '';
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  background: url(../img/ico-hart-red.svg) no-repeat 50% / contain;
+  transition: 0.3s;
+}
+
+.btn-goinsta:hover::after {
+  opacity: 1;
+}
+
+/* sec-title 부분 */
+
+.sec-title {
+  font-weight: 900;
+  font-size: 3.5rem;
+  color: #fff;
+
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.sound-source {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  overflow: hidden;
+}
+
+.background-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 1s ease-in-out;
+  filter: blur(10px);
+  z-index: -1;
+}
+
+.dim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  pointer-events: none;
+
+  /* backdrop-filter: blue(20px); */
+}
+
+.sound-swiper {
+  margin-top: 8rem;
+}
+
+.swiper {
+  width: 850px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
+
+.sound-swiper .swiper-pagination {
+  position: absolute;
+  top: 90%;
+
+  z-index: 2;
+}
+
+.sound-swiper .swiper-pagination .swiper-pagination-bullet {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+
+  background: transparent;
+  opacity: 7;
+
+  margin: 10px;
+}
+.sound-swiper .swiper-pagination .swiper-pagination-bullet-active {
+  background: url(../img/logo-white.svg) no-repeat 30% / contain;
+  border: none;
+  width: 5rem;
+  height: 3rem;
+}
+
+/* 비디오 부분 */
+.vedio-visual {
+  /* height: 100vw; */
+  background: #000;
+  padding: 15rem 0 10rem;
+}
+
+.youtube-video {
+  display: flex;
+  gap: 2rem;
+}
+
+.big-video {
+  width: 88rem;
+  height: 55rem;
+}
+.small-video iframe,
+.big-video iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.small-video {
+  width: 41.4rem;
+  height: 26.4rem;
+}
+
+.small-video iframe + iframe {
+  margin-top: 2rem;
+}
+
+.btn-more-white {
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+}
+
+.more-white {
+  width: 10rem;
+  border: 1px solid #fff;
+
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  transition: 0.3s;
+}
+
+.more-white .more-con {
+  color: #fff;
+}
+.more-white .more-ico {
+  width: 1.2rem;
+  height: 1.2rem;
+  background: url(../img/ico-more-whit.png) no-repeat 0 0 / contain;
+}
+
+.more-white:hover {
+  background: var(--main-color);
+  border: 1px solid var(--main-color);
+}
+
+.square {
+  padding: 25rem;
+}
+.square .sec-title {
+  color: #000;
+}
+
+/* 굿즈 부분 */
+
+.item-list {
+  display: flex;
+  justify-content: space-between;
+}
+.item-list dl {
+  position: relative;
+  width: 30.8rem;
+  height: 59.8rem;
+  /* background: yellowgreen; */
+  /* border: 1px solid #000; */
+
+  border-radius: 10px;
+  margin-top: 10rem;
+  padding: 6rem 10rem;
+  background: url(../img/sound-ive-pic.jpg) no-repeat 50% 50% / cover;
+
+  overflow: hidden;
+}
+
+.item-list dl:nth-child(1) {
+  background-image: url(../img/square-stick.jpg);
+}
+.item-list dl:nth-child(2) {
+  background-image: url(../img/sound-ive-pic.jpg);
+}
+.item-list dl:nth-child(3) {
+  background-image: url(../img/square-card.jpg);
+}
+.item-list dl:nth-child(4) {
+  background-image: url(../img/square-figurine.jpg);
+}
+
+.item-list dl::after {
+  content: '';
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+}
+
+.item-list dl dt {
+  font-weight: 600;
+  font-size: 2.2rem;
+
+  color: #fff;
+  position: absolute;
+  z-index: 1;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.item-list dd {
+  margin-top: 30rem;
+  position: absolute;
+  z-index: 1;
+}
+
+/* footer 부분 */
+
+.footer {
+  width: 100%;
+  background: #444;
+  padding: 4rem;
+  color: #fff;
+}
+
+.foot-logo {
+  width: 14.7rem;
+  height: 5.3rem;
+  background: url(../img/foot-logo.svg) no-repeat 0 0 / cover;
+}
+
+.foot-con {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10rem;
+}
+
+.foot-info {
+  font-weight: 600;
+  font-size: 2.2rem;
+
+  display: flex;
+  gap: 3.2rem;
+  margin-top: 6rem;
+}
+
+.go-sns {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
+
+.foot-txt {
+  font-size: 1.8rem;
+  display: flex;
+  gap: 3.2rem;
+  margin-top: 15rem;
+}
+
+.foot-txt2 {
+  margin-top: 2rem;
+  font-size: 1.8rem;
+}
+
+/* top 버튼  */
+
+.btn-gotop {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.btn-gotop::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: transparent url(../img/logo.svg) no-repeat 50% 50% / contain;
+  transition: 0.4s;
+}
+.btn-gotop::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: transparent url(../img/logo.svg) no-repeat 50% 50% / contain;
+}
+
+.btn-gotop:hover::before {
+  margin-top: -60px;
+}
