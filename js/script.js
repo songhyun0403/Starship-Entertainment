@@ -22,7 +22,22 @@ $(function () {
     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // 모바일 or 페이지 끝에서 bounce 현상 방지
   });
 
-  var swiper = new Swiper('.sound-swiper', {
+  // 아티스트 슬라이드 부분
+
+  var newSwiper = new Swiper('.newSwiper', {
+    slidesPerView: 3.5,
+    spaceBetween: 30,
+
+    autoplay: {
+      delay: 1000,
+    },
+    loop: true,
+    speed: 3000,
+  });
+
+  // 두 번째 스와이퍼 (앨범)
+  // 기존 Swiper 초기화 코드
+  var soundSwiper = new Swiper('.sound-swiper', {
     effect: 'coverflow',
     grabCursor: true,
     centeredSlides: true,
@@ -35,33 +50,30 @@ $(function () {
       slideShadows: true,
     },
     pagination: {
-      el: '.swiper-pagination',
+      el: '.sound-pagination',
+      clickable: true,
     },
-
     autoplay: {
       delay: 1000,
     },
     loop: true,
     speed: 1000,
-
-    navigation: {
-      nextEl: '.btn-next',
-      prevEl: '.btn-prev',
-    },
   });
 
+  // 배경 이미지 업데이트 함수
   function updateBackground() {
-    var activeSlide = swiper.slides[swiper.activeIndex];
+    var activeSlide = soundSwiper.slides[soundSwiper.activeIndex];
     var bgImage = activeSlide.getAttribute('data-bg');
     document.querySelector(
       '.background-blur'
     ).style.backgroundImage = `url(${bgImage})`;
   }
 
-  // Initial background image setup
+  // 초기 배경 이미지 설정
   updateBackground();
 
-  swiper.on('slideChange', updateBackground);
+  // Swiper 슬라이드 변경 이벤트 리스너 등록
+  soundSwiper.on('slideChange', updateBackground);
 
   AOS.init();
 
@@ -87,7 +99,7 @@ $(function () {
     autoAlpha: 0,
     y: 30,
     scrollTrigger: {
-      trigger: '.artist',
+      trigger: '.artist-slider',
       start: 'top 50%',
       toggleActions: 'play none reverse reverse',
       onEnter: () => console.log('Enter'),

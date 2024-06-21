@@ -123,17 +123,19 @@ body {
   position: relative;
   width: 100%;
   height: 100vh;
-  background: #55f;
+
   overflow: hidden;
 }
 
 .video {
   width: 150%;
   height: 150%;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  z-index: -10;
 }
 
 .video iframe {
@@ -141,167 +143,56 @@ body {
   height: 100%;
 }
 
-.artist {
-  padding: 30rem 0 15rem;
-}
+/* artist 부분 */
 
-.artist-title {
-  font-weight: 600;
-  font-size: 2.8rem;
-  color: #000;
+/* 아티스트 슬라이더 */
 
-  display: flex;
-  gap: 32.4rem;
+/* 새로운 슬라이더 섹션 (artist-slider) */
 
-  justify-content: center;
-  /* align-items: center; */
-}
-
-.actiors,
-.artists {
-  cursor: pointer;
-  position: relative; /* 가상 요소를 위한 상대 위치 설정 */
-  transition: 0.3s;
-}
-
-.actiors:hover,
-.artists:hover {
-  color: var(--main-color);
-}
-.actiors::after,
-.artists::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -2px; /* 밑줄을 텍스트 아래에 배치 */
+.newSwiper {
   width: 100%;
-  height: 2px; /* 밑줄의 두께 */
-  background: var(--main-color); /* 밑줄의 색상 */
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease-in-out; /* 애니메이션 전환 시간 및 효과 */
+  height: 100%;
 }
-
-.actiors:hover::after,
-.artists:hover::after {
-  transform: scaleX(1);
-}
-
-.artists-list {
-  display: flex;
-  flex-wrap: wrap;
-
-  flex: column;
-  gap: 2rem;
-
-  margin-top: 15rem;
-}
-
-.artists-list li {
-  width: 30.8rem;
-  height: 37rem;
-
-  /* background: green; */
-  border: 1px solid #000;
-  justify-content: center;
-  border-radius: 10px;
-
-  padding: 30px 10px 0;
-}
-
-.artists-list li figure {
-  width: 28rem;
-  height: 22.5rem;
-  overflow: hidden;
+.artist-slider {
   position: relative;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #fff;
+  border-radius: 5% 5% 0 0;
+  /* overflow: hidden; */
 
-  transition: 0.3s;
-}
-.artists-list li figure:hover {
-  border-radius: 10px;
+  padding: 15rem 0;
 }
 
-.artists-list li figure img {
+.artist-slider .sec-title {
+  color: #000;
+}
+
+.artist-slider .swiper-wrapper {
+  display: flex;
+  align-items: center;
+
+  margin-top: 6rem;
+}
+
+.artist-slider .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  /* background: #fff; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: red; */
+}
+
+.artist-slider .swiper-slide img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  transition: 0.4s;
-}
-
-.artists-list li:hover figure img {
-  transform: translate(-50%, -50%) scale(1.2);
-}
-
-.artists-list li:last-child {
-  display: flex;
-  align-items: center;
-  border: none;
-  position: relative;
-}
-.artists-list li:last-child .more {
-  width: 10rem;
-  border: 1px solid #000;
-  /* padding: 1rem; */
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  transition: 0.3s;
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-}
-.artists-list li:last-child .more-con {
-  font-weight: 500;
-  font-size: 2rem;
-  color: #000;
-}
-.artists-list li:last-child .more-ico {
-  width: 1.2rem;
-  height: 1.2rem;
-  background: url(../img/ico-more.png) no-repeat 0 0 / contain;
-}
-
-.artists-list li:last-child .more:hover {
-  background: var(--main-color);
-  border: 1px solid var(--main-color);
-}
-
-.artist-info {
-  display: flex;
-  justify-content: space-between;
-  padding: 1.2rem;
-}
-
-.btn-goinsta {
-  width: 3rem;
-  height: 3rem;
-  background: url(../img/ico-hart.svg) no-repeat 50% / contain;
-  position: relative;
-}
-
-.btn-goinsta::after {
-  content: '';
-  width: 3rem;
-  height: 3rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  background: url(../img/ico-hart-red.svg) no-repeat 50% / contain;
-  transition: 0.3s;
-}
-
-.btn-goinsta:hover::after {
-  opacity: 1;
 }
 
 /* sec-title 부분 */
@@ -316,6 +207,9 @@ body {
   position: relative;
   z-index: 1;
 }
+
+/* 앨범소개부분
+ */
 .sound-source {
   position: relative;
   display: flex;
@@ -325,6 +219,31 @@ body {
   height: 100vh;
 
   overflow: hidden;
+}
+
+/* 
+.sound-swiper {
+} */
+
+.sound-source {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.dim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .background-blur {
@@ -337,65 +256,55 @@ body {
   background-position: center;
   transition: background-image 1s ease-in-out;
   filter: blur(10px);
-  z-index: -1;
-}
-
-.dim {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-
-  pointer-events: none;
-
-  /* backdrop-filter: blue(20px); */
+  z-index: -2;
 }
 
 .sound-swiper {
-  margin-top: 8rem;
+  padding: 10rem;
+  width: 50%;
 }
 
-.swiper {
-  width: 850px;
-  padding-top: 50px;
-  padding-bottom: 50px;
+.sound-source .sec-title {
+  font-weight: 900;
+  font-size: 3.5rem;
+  color: #fff;
+  display: flex;
+  justify-content: center;
 }
 
-.swiper-slide {
+.sound-source .swiper-slide {
   background-position: center;
   background-size: cover;
   width: 300px;
   height: 300px;
 }
 
-.swiper-slide img {
+.sound-source .swiper-slide img {
   display: block;
   width: 100%;
 }
 
-.sound-swiper .swiper-pagination {
+.sound-source .sound-pagination {
   position: absolute;
-  top: 90%;
-
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 2;
 }
 
-.sound-swiper .swiper-pagination .swiper-pagination-bullet {
+.sound-source .sound-pagination .swiper-pagination-bullet {
   display: inline-block;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   border: 1px solid #fff;
-
-  background: transparent;
-  opacity: 7;
-
+  background: #fff;
+  opacity: 0.7;
   margin: 10px;
 }
-.sound-swiper .swiper-pagination .swiper-pagination-bullet-active {
-  background: url(../img/logo-white.svg) no-repeat 30% / contain;
+
+.sound-source .sound-pagination .swiper-pagination-bullet-active {
+  background: url('../img/logo-white.svg') no-repeat 30% / contain;
   border: none;
   width: 5rem;
   height: 3rem;
@@ -439,10 +348,10 @@ body {
 }
 
 .more-white {
-  width: 10rem;
+  width: 12rem;
   border: 1px solid #fff;
 
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -466,12 +375,14 @@ body {
 
 .square {
   padding: 25rem;
-}
-.square .sec-title {
-  color: #000;
+  background: rgba(red, green, blue, alpha);
 }
 
 /* 굿즈 부분 */
+
+.square {
+  background: rgba(0, 0, 0, 0.6);
+}
 
 .item-list {
   display: flex;
@@ -507,7 +418,7 @@ body {
 
 .item-list dl::after {
   content: '';
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
   position: absolute;
   top: 0;
   left: 0;
@@ -520,7 +431,7 @@ body {
 
 .item-list dl dt {
   font-weight: 600;
-  font-size: 2.2rem;
+  font-size: 3rem;
 
   color: #fff;
   position: absolute;
@@ -577,7 +488,7 @@ body {
   font-size: 1.8rem;
   display: flex;
   gap: 3.2rem;
-  margin-top: 15rem;
+  margin-top: 8rem;
 }
 
 .foot-txt2 {
@@ -591,12 +502,17 @@ body {
   position: fixed;
   bottom: 5%;
   right: 5%;
-  width: 6rem;
-  height: 6rem;
-  border-radius: 50%;
+  width: 5rem;
+  height: 8rem;
+  border-radius: 50px;
   border: none;
   cursor: pointer;
   overflow: hidden;
+
+  flex: column;
+
+  padding: 0.5rem;
+  z-index: 10;
 }
 
 .btn-gotop::before {
@@ -604,7 +520,7 @@ body {
   display: block;
   width: 100%;
   height: 100%;
-  background: transparent url(../img/logo.svg) no-repeat 50% 50% / contain;
+  background: transparent url(../img/logo.svg) no-repeat 50% / contain;
   transition: 0.4s;
 }
 .btn-gotop::after {
@@ -612,9 +528,9 @@ body {
   display: block;
   width: 100%;
   height: 100%;
-  background: transparent url(../img/logo.svg) no-repeat 50% 50% / contain;
+  background: transparent url(../img/logo.svg) no-repeat 50% / contain;
 }
 
 .btn-gotop:hover::before {
-  margin-top: -60px;
+  margin-top: -70px;
 }

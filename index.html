@@ -26,6 +26,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -74,121 +75,69 @@
         </div>
       </section>
 
-      <section class="artist">
-        <div class="inner">
-          <div class="artist-title" data-aos="fade-up">
-            <h2 class="artists">ARTISTS</h2>
-            <h2 class="actiors">ACTORS</h2>
+      <section class="artist-slider">
+        <h3 class="sec-title" data-aos="fade-up">Artists</h3>
+        <div class="swiper newSwiper" data-aos="fade-up" data-aos-delay="300">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <figure>
+                <img src="./img/artist-ive-pic.jpg" alt="아이브" />
+              </figure>
+            </div>
+            <div class="swiper-slide">
+              <figure>
+                <img src="./img/artist-cracity-pic.jpg" alt="크래비티" />
+              </figure>
+            </div>
+            <div class="swiper-slide">
+              <figure>
+                <img src="./img/artist-monstax-pic.png" alt="몬스타엑스" />
+              </figure>
+            </div>
+            <div class="swiper-slide">
+              <figure>
+                <img src="./img/artist-wjsn-pic.png" alt="우주소녀" />
+              </figure>
+            </div>
+            <div class="swiper-slide">
+              <figure>
+                <img src="./img/artist-sewoon-pic.png" alt="정세원" />
+              </figure>
+            </div>
+            <div class="swiper-slide">
+              <figure>
+                <img src="./img/artist-kwill-pic.png" alt="케이윌" />
+              </figure>
+            </div>
+            <div class="swiper-slide">
+              <figure>
+                <img src="./img/artist-brothersu-pic.png" alt="브라더수" />
+              </figure>
+            </div>
           </div>
-          <ul class="artists-list" data-aos="fade-up" data-aos-delay="300">
-            <li>
-              <a href="#">
-                <p>@kwill_official</p>
-                <figure>
-                  <img src="./img/artist-kwill-pic.jfif" alt="케이윌" />
-                </figure>
-                <div class="artist-info">
-                  <div class="btn-goinsta">
-                    <i class="hidden">케이윌 인스타 가기</i>
-                  </div>
-                  <strong>케이윌</strong>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <p>@official_monsta_x</p>
-                <figure>
-                  <img src="./img/artist-monstax-pic.jfif" alt="몬스타엑스" />
-                </figure>
-                <div class="artist-info">
-                  <div class="btn-goinsta">
-                    <i class="hidden">몬스타엑스 인스타 가기</i>
-                  </div>
-                  <strong>몬스타엑스</strong>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <p>@wjsn_cosmic</p>
-                <figure>
-                  <img src="./img/artist-wjsn-pic.jfif" alt="우주소녀" />
-                </figure>
-                <div class="artist-info">
-                  <div class="btn-goinsta">
-                    <i class="hidden">우주소녀 인스타 가기</i>
-                  </div>
-                  <strong>우주소녀</strong>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <p>@brothersu</p>
-                <figure>
-                  <img src="./img/artist-brothersu-pic.jpg" alt="브라더수" />
-                </figure>
-                <div class="artist-info">
-                  <div class="btn-goinsta">
-                    <i class="hidden">브라더수 인스타 가기</i>
-                  </div>
-                  <strong>브라더수</strong>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <p>@sewoon_j</p>
-                <figure>
-                  <img src="./img/artist-sewoon-pic.jpg" alt="정세운" />
-                </figure>
-                <div class="artist-info">
-                  <div class="btn-goinsta">
-                    <i class="hidden">정세운 인스타 가기</i>
-                  </div>
-                  <strong>정세운</strong>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <p>@cracity_official</p>
-                <figure>
-                  <img src="./img/artist-cracity-pic.jpg" alt="크래비티" />
-                </figure>
-                <div class="artist-info">
-                  <div class="btn-goinsta">
-                    <i class="hidden">크래비티 인스타 가기</i>
-                  </div>
-                  <strong>크래비티</strong>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <p>@ivestarship</p>
-                <figure>
-                  <img src="./img/artist-ive-pic.jpg" alt="아이브" />
-                </figure>
-                <div class="artist-info">
-                  <div class="btn-goinsta">
-                    <i class="hidden">아이브 인스타 가기</i>
-                  </div>
-                  <strong>아이브</strong>
-                </div>
-              </a>
-            </li>
-
-            <li data-aos="fade-left" data-aos-delay="400">
-              <a href="#" class="more">
-                <div class="more-con"><p>MORE</p></div>
-                <div class="more-ico"><i class="hidden">더보기 아이콘</i></div>
-              </a>
-            </li>
-          </ul>
         </div>
       </section>
+
+      <!-- <section class="artist-slider">
+        <h3 class="sec-title" data-aos="fade-up">Artist</h3>
+
+        <div class="inner">
+          <div class="swiper newSwiper" data-aos="fade-up" data-aos-delay="300">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="./img/artist-ive-pic.jpg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="./img/artist-monstax-pic.jfif" />
+              </div>
+            
+      </div>
+            <div class="swiper-pagination new-pagination"></div>
+            <div class="btn-next-new">Next</div>
+            <div class="btn-prev-new">Prev</div>
+          </div>
+        </div>
+      </section> -->
 
       <section class="sound-source">
         <h3 class="sec-title" data-aos="fade-up">sound source</h3>
@@ -198,7 +147,7 @@
           <div
             class="swiper sound-swiper"
             data-aos="fade-up"
-            data-aos-delay="300"
+            data-aos-delay="400"
           >
             <div class="swiper-wrapper">
               <div class="swiper-slide" data-bg="./img/sound-ive1-pic.jpg">
@@ -229,7 +178,7 @@
                 <img src="./img/sound-ive2-pic.jpg" />
               </div>
             </div>
-            <div class="swiper-pagination"></div>
+            <div class="swiper-pagination sound-pagination"></div>
           </div>
         </div>
       </section>
@@ -304,7 +253,7 @@
               </dd>
             </dl>
             <dl>
-              <dt>Photo Card</dt>
+              <dt>Photo</dt>
               <dd>
                 <div class="btn-more-white">
                   <a href="#" class="more-white">
