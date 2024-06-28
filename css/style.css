@@ -151,7 +151,7 @@ body {
 
 .submenu-wrap {
   position: absolute;
-  top: 13.5rem;
+  top: 15rem;
   right: 60rem;
   /* background: #5f5; */
   z-index: 1;
@@ -161,7 +161,7 @@ body {
 .submenu-wrap ul {
   display: flex;
 
-  gap: 6rem;
+  gap: 10rem;
 }
 
 .submenu-wrap ul li dl dt {
