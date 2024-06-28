@@ -4,7 +4,7 @@
 
 :root {
   font-size: 62.5%; /* 10px */
-  --main-color: #fedc83;
+  --main-color: #ffcc47;
   --title-color: #000;
   --text-color: #333;
 }
@@ -51,7 +51,29 @@ body {
   left: 0;
   z-index: 10;
 
-  transition: background-color 0.3s, color 0.3s;
+  /* transition: background-color 0.3s, color 0.3s; */
+}
+
+#header::after {
+  content: '';
+  background: rgba(255, 255, 255, 0.9);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  transform: translateY(-100%);
+  transition: 0.3s;
+
+  z-index: -11;
+}
+
+#header.active::after {
+  transform: translateY(0%);
+}
+
+#header.active .gnb li a {
+  color: #000;
 }
 
 #header.scrolled {
@@ -72,10 +94,16 @@ body {
 #header.scrolled h1 {
   background: url(../img/header-logo.svg) no-repeat 0 0 / cover;
 }
+
+#header.active h1 {
+  background: url(../img/header-logo.svg) no-repeat 0 0 / cover;
+}
 #header .gnb {
   display: flex;
   gap: 7.5rem;
   align-items: center;
+
+  /* background: blue; */
 }
 
 #header .gnb li {
@@ -91,32 +119,114 @@ body {
   color: black; /* 스크롤 시 폰트 색상 변경 */
 }
 
-#header .gnb li::after {
+#header.active .gnb li::after {
   content: '';
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 2px; /* 밑줄의 두께 */
-  background: var(--main-color); /* 밑줄의 색상 */
+  background: var(--main-color);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.3s ease-in-out; /* 애니메이션 전환 시간 및 효과 */
+  transition: transform 0.3s ease-in-out;
 }
 
-#header .gnb li:hover::after {
+#header.active .gnb li:hover::after {
   transform: scaleX(1);
 }
 
 #header .menu-more {
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
 
-  background: url(../img/btn-more-white.png) no-repeat 50% 50% / cover;
+  background: url(../img/btn-more-white.png) no-repeat 50% / contain;
+}
+#header.active .menu-more,
+#header.scrolled .menu-more {
+  background: url(../img/btn-more.png) no-repeat 50% / contain;
 }
 
-#header.scrolled .menu-more {
-  background: url(../img/btn-more.png) no-repeat 50% 50% / cover;
+/*  submenu */
+
+.submenu-wrap {
+  position: absolute;
+  top: 13.5rem;
+  right: 60rem;
+  /* background: #5f5; */
+  z-index: 1;
+
+  display: none;
+}
+.submenu-wrap ul {
+  display: flex;
+
+  gap: 6rem;
+}
+
+.submenu-wrap ul li dl dt {
+  font-weight: 600;
+  font-size: 2.2rem;
+  color: var(--title-color);
+}
+
+.submenu-wrap ul li.on dl dt {
+  color: var(--main-color);
+}
+
+.submenu-wrap ul li dl dd {
+  font-size: 1.8rem;
+  line-height: 1.78;
+}
+.submenu-wrap ul li dl dt + dd {
+  margin-top: 2.4rem;
+}
+
+.submenu-wrap ul li dl dd a {
+  display: flex;
+  align-items: center;
+  /* border: 1px solid #000; */
+}
+
+.submenu-wrap ul li dl dd a::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--main-color);
+  transform: translateX(0px);
+  opacity: 0;
+  transition: 0.3s;
+}
+.submenu-wrap ul li dl dd a:hover::before {
+  opacity: 1;
+  transform: translateX(-16px); /* trftx */
+}
+
+.sub-menu-more {
+  position: absolute;
+  top: 100%;
+  right: 14%;
+  z-index: 11;
+
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 1rem;
+  display: none;
+}
+
+.sub-menu-more dl {
+  line-height: 1.78;
+}
+
+.sub-menu-more dt {
+  font-weight: 600;
+  font-size: 2.2rem;
+}
+
+.sub-menu-more dd {
+  color: var(--text-color);
 }
 
 .visual {
@@ -142,12 +252,6 @@ body {
   width: 100%;
   height: 100%;
 }
-
-/* artist 부분 */
-
-/* 아티스트 슬라이더 */
-
-/* 새로운 슬라이더 섹션 (artist-slider) */
 
 .newSwiper {
   width: 100%;
@@ -350,6 +454,7 @@ body {
 .more-white {
   width: 12rem;
   border: 1px solid #fff;
+  border-radius: 10px;
 
   padding: 1rem 1.5rem;
   display: flex;
@@ -375,12 +480,6 @@ body {
 
 .square {
   padding: 25rem;
-  background: rgba(red, green, blue, alpha);
-}
-
-/* 굿즈 부분 */
-
-.square {
   background: rgba(0, 0, 0, 0.6);
 }
 
@@ -471,7 +570,7 @@ body {
 
 .foot-info {
   font-weight: 600;
-  font-size: 2.2rem;
+  font-size: 1.9rem;
 
   display: flex;
   gap: 3.2rem;
@@ -502,8 +601,8 @@ body {
   position: fixed;
   bottom: 5%;
   right: 5%;
-  width: 5rem;
-  height: 8rem;
+  width: 7rem;
+  height: 9rem;
   border-radius: 50px;
   border: none;
   cursor: pointer;
@@ -520,7 +619,7 @@ body {
   display: block;
   width: 100%;
   height: 100%;
-  background: transparent url(../img/logo.svg) no-repeat 50% / contain;
+  background: transparent url(../img/logo.svg) no-repeat 50% / 60%;
   transition: 0.4s;
 }
 .btn-gotop::after {
@@ -528,9 +627,9 @@ body {
   display: block;
   width: 100%;
   height: 100%;
-  background: transparent url(../img/logo.svg) no-repeat 50% / contain;
+  background: transparent url(../img/logo.svg) no-repeat 50% / 60%;
 }
 
 .btn-gotop:hover::before {
-  margin-top: -70px;
+  margin-top: -80px;
 }

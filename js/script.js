@@ -1,6 +1,45 @@
 $(function () {
-  var header = document.getElementById('header');
+  const $header = $('#header');
+  const $subMenu = $('.submenu-wrap');
+  const $subMore = $('.sub-menu-more');
+  const $menu = $('.gnb > li');
+  const $menuMore = $('.menu-more');
+
+  const duration = 300;
   var lastScrollTop = 0;
+
+  // 마우스가 메뉴에 들어오면(mouseenter)
+  $menu.on('mouseenter', function () {
+    const menuIdx = $(this).index();
+    $menu.removeClass('on').eq(menuIdx).addClass('on');
+    $subMenu.find('li').removeClass('on').eq(menuIdx).addClass('on');
+
+    openMenu();
+  });
+
+  // 마우스가 메뉴에 나가면(mouseleave)
+  $header.on('mouseleave', function () {
+    $menu.removeClass('on');
+    $subMenu.find('li').removeClass('on');
+    closeMenu();
+  });
+
+  function openMenu() {
+    $header.addClass('active');
+    $subMenu.stop().fadeIn(duration);
+  }
+
+  function closeMenu() {
+    $header.removeClass('active');
+    $subMenu.stop().fadeOut(duration);
+  }
+
+  //  개별 서브 메뉴오픈
+  $('.menu-more').on('click', function () {
+    $('.sub-menu-more').stop().slideToggle(duration);
+  });
+
+  // 스크롤 헤더
 
   window.addEventListener('scroll', function () {
     if (window.scrollY > 0) {
@@ -19,7 +58,7 @@ $(function () {
       // 스크롤 업
       header.classList.remove('hidden');
     }
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // 모바일 or 페이지 끝에서 bounce 현상 방지
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
   });
 
   // 아티스트 슬라이드 부분
